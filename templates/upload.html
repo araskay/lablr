@@ -1,0 +1,30 @@
+<html>
+   <body>
+      <section class="bg-primary mb-0" id="try">
+         <div class="container">
+            <h2 class="text-center text-white">Lablr</h2>
+            <hr class="star-light mb-5">
+               <form action="/upload" method="post"
+               enctype="multipart/form-data">
+                  <p><input type="file" name="file">
+                     <input type="submit" value="submit">
+               </form>
+
+               {% if originalimage %}
+                  <img src="/image/{{originalimage}}">
+               {% else %}
+                  No image selected.
+               {% endif %}
+               <hr class="star-light mb-5">
+               Suggested Labels:
+               {% if label1 %}
+                  {{label1}}, {{label2}}, {{label3}}
+               {% endif %}
+               <br />
+               {% if plotimage %}
+                  <img src="/plot/{{plotimage}}">
+               {% endif %}
+   </body>
+</html>
+
+
