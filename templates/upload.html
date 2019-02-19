@@ -1,0 +1,47 @@
+<html>
+   <body>
+      <section class="bg-primary mb-0" id="try">
+         <div class="container">
+            <h2 class="text-center text-white">Lablr</h2>
+            <hr class="star-light mb-5">
+               <form action="/upload" method="post"
+               enctype="multipart/form-data">
+                  <p><input type="file" name="file">
+                     <input type="submit" value="submit">
+               </form>
+
+               {% if originalimage %}
+                  <img src="/image/{{originalimage}}">
+               {% else %}
+                  No image selected.
+               {% endif %}
+               
+               
+               {% if label1 %}
+                  <hr class="star-light mb-5">
+                  Suggested Labels:
+                  {{label1}}, {{label2}}, {{label3}}, {{label4}}, {{label5}}
+                  <br /> <br />
+               {% endif %}
+               
+               {% if plotimage_latent %}
+                  <hr class="star-light mb-5">
+                  The following plot shows where your image falls relative to the top 20 most relevant labels:
+                  <br />
+                  <img src="/plot_latent/{{plotimage_latent}}">
+                  <br /> The circles show the centre of each group of lables, 
+                  with larger circles showing more variability in that class.<br />
+                  <br /> <br />
+               {% endif %}
+               
+               {% if plotimage_pca %}
+                  <hr class="star-light mb-5">
+                  The following plot shows where your image falls with respect to other images in the top 3 most relevant groups:
+                  <br />
+                  <img src="/plot_pca/{{plotimage_pca}}">
+                  <br />
+               {% endif %}
+   </body>
+</html>
+
+
