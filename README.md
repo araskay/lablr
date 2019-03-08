@@ -18,4 +18,4 @@ For any new image, the proximity of the image to each distribution is measured u
 
 In addition to suggesting the most relevant labels, Lablr provides a visualization of the latent space showing where the new image falls relative to the most relevant labels. This visualization is a 2D PCA plot of the latent space. The centroid and dispersion of each disribution are visualized using circles centred on the centroid of the distribution with radii proportional to the dispersion, where the dispersion is measured as the determinant of the corresponding covariance matrix.
 
-![latent space visualization](https://github.com/kayvanrad/lablr/blob/master/images/latent_space20190308-022520.png]
+![latent space visualization](https://github.com/kayvanrad/lablr/blob/master/images/latent_space20190308-022520.png)
