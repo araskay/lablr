@@ -10,7 +10,7 @@ and suggest labels for new images (see webapp.py).
 
 Note: if you feel confident about your computational resources,
 e.g., if running on HPC clusters, you can use flickr_vae.py,
-which loadsall the data to the memory for slightly faster training.
+which loads all the data to the memory for slightly faster training.
 '''
 
 # the following is the directory where the model and also the train/test sets are saved
