@@ -8,6 +8,10 @@ import os
 import sklearn.covariance as skc
 import imageutils, flickrutils
 import time
+import keras.backend as K
+import tensorflow as tf
+
+K.set_image_data_format('channels_last')
 
 maindir='.'
 
@@ -21,6 +25,14 @@ with open(maindir+'/y_train.dat','rb') as f:
     y_train=pickle.load(f)
 
 encoder = km.load_model(maindir+'/vae_encoder_gen_maxpool_16fm.h5')
+'''
+Every web request handled by Flask will create a new threads (or 
+something similar to threads), which will generate their own Tensorflow
+session, Not the default one that we have loaded with our models. To fix
+this, We just tell them to use the default session that loaded with our
+models [https://kobkrit.com/tensor-something-is-not-an-element-of-this-graph-error-in-keras-on-flask-web-server-4173a8fe15e1].
+'''
+graph = tf.get_default_graph()
 
 image_shape=(128,128,3)
 
@@ -38,7 +50,10 @@ def get_lables(image,uploadfolder='.'):
     x = np.expand_dims(normalized,axis=0)
     x = np.float32(x)/255.0
     
-    lv_x = encoder.predict(x)[2]
+    global graph
+    with graph.as_default():
+        lv_x = encoder.predict(x)[2]
+    
     lv_x_pca = pca.transform(lv_x)
 
     d_robust = np.zeros(nclass)
