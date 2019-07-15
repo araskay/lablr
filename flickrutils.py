@@ -1,3 +1,5 @@
+import numpy as np
+
 def get_labels(filename):
     '''
         read lables from text file and return as a list
