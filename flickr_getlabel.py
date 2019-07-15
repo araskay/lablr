@@ -46,6 +46,11 @@ for i in range(nclass):
 
 def get_lables(image,uploadfolder='.'):
     img = cv2.imread(image, cv2.IMREAD_UNCHANGED)
+
+    # if there is an alpha channel, just ignore it
+    if img.shape[-1] == 4:
+        img = img[:,:,0:-1]
+
     normalized = imageutils.normalize_image(img, image_shape)
     x = np.expand_dims(normalized,axis=0)
     x = np.float32(x)/255.0
