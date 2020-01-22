@@ -4,4 +4,6 @@ opencv-python
 tensorflow
 keras
 sklearn
+skimage
 matplotlib
+
