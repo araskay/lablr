@@ -7,6 +7,7 @@ import sklearn.covariance as skc
 import flickrutils
 import imageutils
 import pickle # used to save the data for the web app
+import cv2
 
 '''
 Validate the model and save train/test data and PCA model
@@ -16,6 +17,9 @@ Note: this version loads train/test data into memory from
 python pickle files. If using generators, use flickr_vae_gen_validate.py
 '''
 
+def bgr2rgb(srcBGR):
+    return(cv2.cvtColor(srcBGR, cv2.COLOR_BGR2RGB))
+    
 datadir='/scratch/mkayvan/flickr/normalized2000ma'
 modeldir='/scratch/mkayvan/flickr/normalized2000ma'
 image_shape=(128,128,3)
