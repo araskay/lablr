@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import pickle, cv2
+import pickle
 import numpy as np
 import keras.models as km
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import os
 import sklearn.covariance as skc
 import imageutils, flickrutils
@@ -45,7 +46,7 @@ for i in range(nclass):
     empirical_covs.append(skc.EmpiricalCovariance().fit(lv_train_pca[y_train==i,]))
 
 def get_lables(image,uploadfolder='.'):
-    img = cv2.imread(image, cv2.IMREAD_UNCHANGED)
+    img = mpimg.imread(image)
 
     # if there is an alpha channel, just ignore it
     if img.shape[-1] == 4:
