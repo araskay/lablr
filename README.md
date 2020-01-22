@@ -2,7 +2,7 @@
 
 Web app
 =======
-Lablr is freely available as a [web app](http://3.17.244.100).
+Lablr is freely available as a [web app](https://lablr-app.herokuapp.com/).
 
 Author
 ======
